@@ -12,7 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class LoginAPP extends Application {
-
 	private AnchorPane pane;
 	private TextField txLogin;
 	private PasswordField txSenha;
@@ -29,22 +28,20 @@ public class LoginAPP extends Application {
 		txSenha.setPromptText("Digite aqui sua senha");
 		btEntrar = new Button("Entrar");
 		btEntrar.setOnAction(e -> logar());
-		Button btSair = new Button("Sair");
+		btSair = new Button("Sair");
 		btSair.setOnAction(e -> sair());
 		pane.getChildren().addAll(txLogin, txSenha, btEntrar, btSair);
 	}
 
-	// inicia a construção da tela
+	// Inicia a construção da tela.
 	@Override
 	public void start(Stage stage) throws Exception {
-
 		LoginAPP.stage = stage;
 		inicializaComponentes();
 		Scene scene = new Scene(pane);
 		stage.setScene(scene);
 		stage.show();
 		posicionaElementos();
-
 	}
 
 	private void posicionaElementos() {
@@ -60,7 +57,6 @@ public class LoginAPP extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-
 	}
 
 	private void sair() {
@@ -68,12 +64,13 @@ public class LoginAPP extends Application {
 	}
 
 	private void logar() {
-		if ("123456".equals(txLogin.getText()) && "alunos".equals(txLogin.getText())) {
-			Alert alert = new Alert(AlertType.INFORMATION, "Login Realizado", ButtonType.CLOSE);
+		if ("123456".equals(txSenha.getText()) && "alunos".equals(txLogin.getText())) {
+			Alert alert = new Alert(AlertType.INFORMATION, "Login realizado", ButtonType.CLOSE);
 			alert.show();
 		} else {
-			Alert alert = new Alert(AlertType.ERROR, "Usuario Invalido ou senha", ButtonType.CLOSE);
+			Alert alert = new Alert(AlertType.ERROR, "Usuário ou senha inválido", ButtonType.CLOSE);
 			alert.show();
 		}
 	}
+
 }
