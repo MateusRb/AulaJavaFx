@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="412.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelloWorldController">
+<AnchorPane prefHeight="412.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelloWorldController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="76.0" layoutY="40.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -31,10 +31,10 @@
                                           <Button fx:id="btnSalvar" layoutX="38.0" layoutY="124.0" mnemonicParsing="false" onAction="#salvar" text="Salvar" />
                                           <Button fx:id="btnExcluir" layoutX="153.0" layoutY="124.0" mnemonicParsing="false" onAction="#excluir" text="Excluir" />
                                        </children></Pane>
-                                    <Label fx:id="lblMsgSalvar" layoutX="34.0" layoutY="71.0" prefHeight="17.0" prefWidth="318.0" />
-                                    <TableView fx:id="tblNomes" layoutX="-7.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="7.0">
+                                    <Label fx:id="lblMsgSalvar" layoutX="76.0" layoutY="68.0" prefHeight="17.0" prefWidth="318.0" />
+                                    <TableView fx:id="tblNomes" layoutX="1.0" layoutY="100.0" prefHeight="200.0" prefWidth="454.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="7.0">
                                       <columns>
-                                        <TableColumn fx:id="colNome" prefWidth="416.0" text="Nome" />
+                                        <TableColumn fx:id="colNome" prefWidth="461.0" text="Nome" />
                                       </columns>
                                     </TableView>
                                  </children>

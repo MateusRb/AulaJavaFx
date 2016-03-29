@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.Optional;
+
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -35,14 +38,30 @@ public class HelloWorldController {
 	// é a primeira coisa a ser executado depois de carregar o xml
 	@FXML
 	private void initialize() {
+		// seta o responsavel por fabricar os valores da coluna
+		colNome.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue()));
 
 	}
 
 	@FXML
 	void excluir(ActionEvent event) {
 		Alert alerta = new Alert(AlertType.CONFIRMATION, "Deseja realmente Excluir?", ButtonType.CANCEL, ButtonType.OK);
-		alerta.show();
+		// desativando o comportamendo padrão
+		Button okButton = (Button) alerta.getDialogPane().lookupButton(ButtonType.OK);
+		okButton.setDefaultButton(false);
 
+		// optional do java 8 executa o show e fica aguardando o click do botão
+		final Optional<ButtonType> result = alerta.showAndWait();
+		// se o click foi no ok executa os botões abaixo
+		if (result.get() == ButtonType.OK) {
+			// Pega a linha selecionada
+			int posicaoTabela = tblNomes.getSelectionModel().getSelectedIndex();
+			// remove da tabela a linha selecionada
+			tblNomes.getItems().remove(posicaoTabela);
+			lblMsgSalvar.setText("Registro Excluido com sucesso");
+			lblMsgSalvar.getStyleClass().remove("msgSalvar");
+			lblMsgSalvar.getStyleClass().add("msgExcluir");
+		}
 	}
 
 	@FXML
@@ -52,7 +71,9 @@ public class HelloWorldController {
 		String msg = "Salvo com sucesso o cadastro: ";
 		// seta no label a mensagem de salvo com sucesso
 		lblMsgSalvar.setText(msg + nome);
+		lblMsgSalvar.getStyleClass().remove("msgExcluir");
 		lblMsgSalvar.getStyleClass().add("msgSalvar");
+		// seta cada um dos nomes para dentro da tabela
 		tblNomes.getItems().add(nome);
 	}
 
